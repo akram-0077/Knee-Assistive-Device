@@ -368,7 +368,6 @@
       text-align: left;
       font-weight: 500;
     }
-
     .table tr:hover td {
       background: rgba(59, 130, 246, 0.08);
     }
@@ -1632,8 +1631,6 @@
             messagingSenderId: "16560352596",
             appId: "1:16560352596:web:4f3bef65ddd886afa42cc1"
           };
-
-
           // Initialize Firebase connection status variable
           let firebaseConnected = false;
 

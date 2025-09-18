@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +12,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
   <style>
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -21,14 +19,12 @@
       color: #e2e8f0;
       min-height: 100vh;
     }
-
     .sidebar {
       background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
       backdrop-filter: blur(20px);
       border-right: 1px solid rgba(148, 163, 184, 0.1);
       box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
     }
-
     .sidebar-item {
       color: #94a3b8;
       padding: 12px 20px;
@@ -42,26 +38,22 @@
       cursor: pointer;
       border: 1px solid transparent;
     }
-
     .sidebar-item:hover {
       background: rgba(59, 130, 246, 0.1);
       color: #3b82f6;
       border-color: rgba(59, 130, 246, 0.2);
       transform: translateX(4px);
     }
-
     .sidebar-item.active {
       background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
       color: white;
       box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
-
     .sidebar-item i {
       width: 20px;
       margin-right: 12px;
       text-align: center;
     }
-
     .navbar {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
       backdrop-filter: blur(20px);
@@ -75,7 +67,6 @@
       top: 0;
       z-index: 50;
     }
-
     .nav-links .nav-item {
       color: #94a3b8;
       font-weight: 500;
@@ -88,24 +79,19 @@
       gap: 6px;
       cursor: pointer;
     }
-
     .nav-links .nav-item:hover {
       background: rgba(59, 130, 246, 0.12);
       color: #3b82f6;
       transform: translateY(-2px);
     }
-
     .nav-links .nav-item.active {
       background: linear-gradient(135deg, #3b82f6, #1d4ed8);
       color: white;
       box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
     }
-
     .nav-links .nav-item i {
       font-size: 15px;
     }
-
-
     .main-content {
       background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(20px);
@@ -115,7 +101,6 @@
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(148, 163, 184, 0.1);
     }
-
     .header-bar {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
       border-radius: 16px;
@@ -128,7 +113,6 @@
       border: 1px solid rgba(148, 163, 184, 0.2);
       backdrop-filter: blur(10px);
     }
-
     .logo {
       font-size: 32px;
       font-weight: 800;
@@ -141,7 +125,6 @@
       text-shadow: 0 0 30px rgba(96, 165, 250, 0.5);
       position: relative;
     }
-
     .logo::before {
       content: '';
       position: absolute;
@@ -155,7 +138,6 @@
       z-index: -1;
       filter: blur(8px);
     }
-
     .logo i {
       margin-right: 16px;
       font-size: 36px;
@@ -164,19 +146,15 @@
       -webkit-text-fill-color: transparent;
       animation: pulse 2s ease-in-out infinite;
     }
-
     @keyframes pulse {
-
       0%,
       100% {
         transform: scale(1);
       }
-
       50% {
         transform: scale(1.05);
       }
     }
-
     .patient-info-bar {
       background: linear-gradient(135deg, #059669 0%, #047857 100%);
       border-radius: 12px;
@@ -186,13 +164,11 @@
       box-shadow: 0 4px 16px rgba(5, 150, 105, 0.2);
       border: 1px solid rgba(16, 185, 129, 0.2);
     }
-
     .patient-info-bar.active {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
     .card {
       background: rgba(30, 41, 59, 0.8);
       backdrop-filter: blur(20px);
@@ -202,13 +178,11 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       transition: all 0.3s ease;
     }
-
     .card:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       border-color: rgba(59, 130, 246, 0.3);
     }
-
     .patient-type-card {
       background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
       border: 2px solid rgba(59, 130, 246, 0.2);
@@ -220,7 +194,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .patient-type-card::before {
       content: '';
       position: absolute;
@@ -231,17 +204,14 @@
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
       transition: left 0.6s;
     }
-
     .patient-type-card:hover::before {
       left: 100%;
     }
-
     .patient-type-card:hover {
       transform: translateY(-8px) scale(1.02);
       border-color: rgba(59, 130, 246, 0.5);
       box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
       color: white;
@@ -256,12 +226,10 @@
       gap: 8px;
       box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
-
     .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
     }
-
     .btn-secondary {
       background: rgba(71, 85, 105, 0.8);
       color: #e2e8f0;
@@ -272,12 +240,10 @@
       border: 1px solid rgba(148, 163, 184, 0.2);
       cursor: pointer;
     }
-
     .btn-secondary:hover {
       background: rgba(71, 85, 105, 1);
       transform: translateY(-1px);
     }
-
     .btn-success {
       background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       color: white;
@@ -289,7 +255,6 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
     }
-
     .btn-danger {
       background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
       color: white;
@@ -301,7 +266,6 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
     }
-
     .btn-warning {
       background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
       color: white;
@@ -317,12 +281,10 @@
       align-items: center;
       gap: 8px;
     }
-
     .btn-warning:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
     }
-
     .btn-info {
       background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
       color: white;
@@ -335,7 +297,6 @@
       box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
       font-size: 14px;
     }
-
     .btn-export-professional {
       background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
       color: white;
@@ -351,17 +312,14 @@
       box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
       font-size: 14px;
     }
-
     .btn-export-professional:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
       background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 100%);
     }
-
     .btn-export-professional i {
       font-size: 16px;
     }
-
     .form-input {
       background: rgba(30, 41, 59, 0.8);
       border: 1px solid rgba(148, 163, 184, 0.2);
@@ -372,17 +330,14 @@
       transition: all 0.3s ease;
       width: 100%;
     }
-
     .form-input:focus {
       outline: none;
       border-color: #3b82f6;
       box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     }
-
     .form-input::placeholder {
       color: #64748b;
     }
-
     .table {
       background: rgba(30, 41, 59, 0.6);
       border-radius: 16px;
@@ -391,7 +346,6 @@
       width: 100%;
       border-collapse: collapse;
     }
-
     .table th {
       background: rgba(51, 65, 85, 0.8);
       color: #e2e8f0;
@@ -402,7 +356,6 @@
       font-size: 14px;
       white-space: nowrap;
     }
-
     .table td {
       padding: 16px;
       border-bottom: 1px solid rgba(148, 163, 184, 0.08);
@@ -411,7 +364,6 @@
       vertical-align: middle;
       font-size: 14px;
     }
-
     .table td:first-child {
       text-align: left;
       font-weight: 500;
@@ -420,15 +372,12 @@
     .table tr:hover td {
       background: rgba(59, 130, 246, 0.08);
     }
-
     .table tr:nth-child(even) td {
       background: rgba(30, 41, 59, 0.3);
     }
-
     .table tr:nth-child(even):hover td {
       background: rgba(59, 130, 246, 0.12);
     }
-
     .warning-box {
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%);
       border: 1px solid rgba(245, 158, 11, 0.2);
@@ -437,7 +386,6 @@
       padding: 16px;
       margin-bottom: 24px;
     }
-
     .info-box {
       background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
       border: 1px solid rgba(59, 130, 246, 0.2);
@@ -446,7 +394,6 @@
       padding: 16px;
       margin-bottom: 24px;
     }
-
     .chart-container {
       background: rgba(30, 41, 59, 0.4);
       border-radius: 16px;
@@ -454,7 +401,6 @@
       border: 1px solid rgba(148, 163, 184, 0.1);
       height: 300px;
     }
-
     .stat-card {
       background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
       border: 1px solid rgba(59, 130, 246, 0.2);
@@ -462,45 +408,37 @@
       padding: 20px;
       text-align: center;
     }
-
     .stat-value {
       font-size: 2rem;
       font-weight: 700;
       color: #3b82f6;
       margin-bottom: 8px;
     }
-
     .stat-value.green {
       color: #10b981;
     }
-
     .tab-content {
       display: none;
     }
-
     .tab-content.active {
       display: block;
       animation: fadeIn 0.5s ease-in-out;
     }
-
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(10px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
     .gradient-text {
       background: linear-gradient(45deg, #60a5fa, #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .patient-card {
       background: rgba(30, 41, 59, 0.6);
       border: 1px solid rgba(148, 163, 184, 0.1);
@@ -511,7 +449,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .patient-card::before {
       content: '';
       position: absolute;
@@ -522,17 +459,14 @@
       background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
       transition: left 0.6s;
     }
-
     .patient-card:hover::before {
       left: 100%;
     }
-
     .patient-card:hover {
       transform: translateY(-4px);
       border-color: rgba(59, 130, 246, 0.3);
       box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
     }
-
     .session-control {
       background: rgba(30, 41, 59, 0.6);
       border-radius: 16px;
@@ -540,7 +474,6 @@
       border: 1px solid rgba(148, 163, 184, 0.1);
       margin-top: 24px;
     }
-
     .language-selector {
       background: rgba(30, 41, 59, 0.8);
       border: 1px solid rgba(148, 163, 184, 0.2);
@@ -552,7 +485,6 @@
       gap: 8px;
       cursor: pointer;
     }
-
     .user-menu {
       background: rgba(30, 41, 59, 0.8);
       border: 1px solid rgba(148, 163, 184, 0.2);
@@ -565,36 +497,30 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
     .user-menu:hover {
       background: rgba(59, 130, 246, 0.1);
       border-color: rgba(59, 130, 246, 0.3);
     }
-
     .stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
       margin-top: 32px;
     }
-
     .stats-card {
       background: rgba(30, 41, 59, 0.6);
       border-radius: 16px;
       padding: 24px;
       border: 1px solid rgba(148, 163, 184, 0.1);
     }
-
     .stats-card.blue {
       border-left: 4px solid #3b82f6;
       background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
     }
-
     .stats-card.green {
       border-left: 4px solid #10b981;
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
     }
-
     .stats-item {
       display: flex;
       justify-content: space-between;
@@ -602,40 +528,32 @@
       padding: 8px 0;
       border-bottom: 1px solid rgba(148, 163, 184, 0.1);
     }
-
     .stats-item:last-child {
       border-bottom: none;
     }
-
     .stats-label {
       color: #94a3b8;
       font-weight: 500;
     }
-
     .stats-value {
       font-weight: 700;
       font-size: 1.1rem;
     }
-
     .stats-value.blue {
       color: #3b82f6;
     }
-
     .stats-value.green {
       color: #10b981;
     }
-
     .table-container {
       width: 100%;
       overflow-x: auto;
       margin-bottom: 24px;
     }
-
     .table-container table {
       width: 100%;
       min-width: 100%;
     }
-
     .status-indicator {
       display: inline-flex;
       align-items: center;
@@ -644,17 +562,14 @@
       font-size: 12px;
       font-weight: 600;
     }
-
     .status-indicator.running {
       background: rgba(16, 185, 129, 0.2);
       color: #10b981;
     }
-
     .status-indicator.stopped {
       background: rgba(239, 68, 68, 0.2);
       color: #ef4444;
     }
-
     /* Modal styles */
     .modal {
       display: none;
@@ -667,7 +582,6 @@
       background-color: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(5px);
     }
-
     .modal-content {
       background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(51, 65, 85, 0.95) 100%);
       margin: 5% auto;
@@ -678,7 +592,6 @@
       border: 1px solid rgba(148, 163, 184, 0.2);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     }
-
     .close {
       color: #94a3b8;
       float: right;
@@ -687,11 +600,9 @@
       cursor: pointer;
       transition: color 0.3s ease;
     }
-
     .close:hover {
       color: #ef4444;
     }
-
     /* Export button container */
     .export-container {
       display: flex;
@@ -699,13 +610,11 @@
       margin-bottom: 24px;
       justify-content: flex-end;
     }
-
     .export-container button {
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
-
     /* Loading animation */
     .loading {
       display: inline-block;
@@ -716,57 +625,46 @@
       border-top-color: #fff;
       animation: spin 1s ease-in-out infinite;
     }
-
     @keyframes spin {
       to {
         transform: rotate(360deg);
       }
     }
-
     .grade-icon {
       display: inline-block;
       font-size: 1.2em;
       margin-left: 0.5rem;
     }
-
     .classification-card .grade-icon {
       animation: bounce 2s infinite;
     }
-
     @keyframes bounce {
-
       0%,
       100% {
         transform: translateY(0);
       }
-
       50% {
         transform: translateY(-5px);
       }
     }
-
     .grade-explanation {
       border-radius: 8px;
       padding: 12px;
       margin: 8px 0;
       transition: all 0.3s ease;
     }
-
     .grade-explanation:hover {
       transform: translateX(4px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
-
     .grade-explanation {
       transition: all 0.3s ease;
       cursor: pointer;
     }
-
     .grade-explanation:hover {
       transform: translateX(4px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
-
     .rom-indicator {
       display: inline-block;
       width: 8px;
@@ -775,23 +673,18 @@
       margin-right: 8px;
       animation: pulse 2s infinite;
     }
-
     @keyframes pulse {
-
       0%,
       100% {
         opacity: 1;
       }
-
       50% {
         opacity: 0.7;
       }
     }
-
     #rom-progress-bar {
       transition: width 0.8s ease-in-out;
     }
-
     .status-indicator-active {
       background: linear-gradient(45deg, #10b981, #059669);
       color: white;
@@ -799,7 +692,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="header-bar">
     <div class="logo">
@@ -807,7 +699,6 @@
       <span>Knee Assistive Device</span>
     </div>
   </div>
-
   <div id="patient-info-bar" class="patient-info-bar">
     <div class="flex items-center gap-4">
       <i class="fas fa-user-check text-xl"></i>
@@ -830,8 +721,6 @@
       </button>
     </div>
   </div>
-
-
   <!-- Navbar -->
   <div class="navbar flex items-center justify-between px-6 py-4 bg-blue-900 text-white shadow-lg">
     <!-- Logo -->
@@ -839,7 +728,6 @@
       <i class="fas fa-stethoscope"></i>
       <span>Dashboard</span>
     </div>
-
     <!-- Nav Links -->
     <nav class="nav-links flex space-x-6">
       <div class="nav-item active cursor-pointer" onclick="showTab('patient-selection', this)">
@@ -859,7 +747,6 @@
       </div>
     </nav>
   </div>
-
   <div class="flex-1">
     <div class="main-content">
       <div id="patient-selection" class="tab-content active">
@@ -867,7 +754,6 @@
           <h1 class="text-4xl font-bold gradient-text mb-4">Pilih Tipe Pasien</h1>
           <p class="text-slate-400 text-lg">Mulai sesi rehabilitasi dengan memilih pasien baru atau lama</p>
         </div>
-
         <div class="grid grid-cols-2 gap-8 mb-8">
           <div class="patient-type-card" onclick="showNewPatientForm()">
             <div class="text-6xl mb-6">
@@ -885,24 +771,20 @@
             <p class="text-slate-400 text-lg">Pilih dari daftar pasien yang sudah terdaftar</p>
           </div>
         </div>
-
         <div id="new-patient-form" class="card" style="display: none;">
           <div class="flex items-center mb-6">
             <i class="fas fa-user-edit text-2xl text-blue-400 mr-4"></i>
             <h3 class="text-2xl font-bold gradient-text">Pendaftaran Pasien Baru</h3>
           </div>
-
           <div class="grid grid-cols-1 gap-6">
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Nama Lengkap</label>
               <input type="text" id="new-patient-name" placeholder="Masukkan nama lengkap pasien" class="form-input" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Usia</label>
               <input type="number" id="new-patient-age" placeholder="Masukkan usia pasien" class="form-input" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Jenis Kelamin</label>
               <select id="new-patient-gender" class="form-input">
@@ -911,12 +793,10 @@
                 <option value="Perempuan">P</option>
               </select>
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Tanggal Sesi</label>
               <input type="date" id="new-patient-date" class="form-input" />
             </div>
-
             <div class="flex gap-4 pt-4">
               <button id="register-btn" onclick="registerNewPatient()" class="btn-primary flex-1">
                 <i class="fas fa-save"></i>
@@ -929,24 +809,20 @@
             </div>
           </div>
         </div>
-
         <div id="edit-patient-form" class="card" style="display: none;">
           <div class="flex items-center mb-6">
             <i class="fas fa-user-edit text-2xl text-orange-400 mr-4"></i>
             <h3 class="text-2xl font-bold gradient-text">Edit Data Pasien</h3>
           </div>
-
           <div class="grid grid-cols-1 gap-6">
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Nama Lengkap</label>
               <input type="text" id="edit-patient-name" placeholder="Masukkan nama lengkap pasien" class="form-input" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Usia</label>
               <input type="number" id="edit-patient-age" placeholder="Masukkan usia pasien" class="form-input" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Jenis Kelamin</label>
               <select id="edit-patient-gender" class="form-input">
@@ -956,13 +832,11 @@
                 <option value="Tidak Diketahui">Tidak Diketahui</option>
               </select>
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Tanggal Pendaftaran</label>
               <input type="date" id="edit-patient-date" class="form-input" />
             </div>
           </div>
-
           <div class="flex gap-4 pt-4">
             <button id="update-patient-btn" onclick="updatePatient()" class="btn-primary flex-1">
               <i class="fas fa-save"></i>
@@ -974,7 +848,6 @@
             </button>
           </div>
         </div>
-
         <div id="existing-patient-list" class="card" style="display: none;">
           <div class="flex items-center justify-between mb-6">
             <div class="flex items-center">
@@ -988,12 +861,10 @@
               </button>
             </div>
           </div>
-
           <div class="space-y-4" id="patient-cards-container">
           </div>
         </div>
       </div>
-
       <div id="realtime-monitor" class="tab-content">
         <div id="no-patient-warning-realtime" class="warning-box">
           <div class="flex items-center">
@@ -1004,7 +875,6 @@
             </div>
           </div>
         </div>
-
         <div id="realtime-content" style="display: none;">
           <div class="flex items-center justify-between mb-6">
             <div class="flex items-center">
@@ -1021,14 +891,8 @@
               </div>
             </div>
           </div>
-
           <div id="mvc-status" style="display:none;"
             class="bg-slate-800 px-4 py-2 rounded-lg border border-slate-600 mb-4"></div>
-
-
-
-
-
           <div class="grid grid-cols-2 gap-6 mb-6">
             <div class="chart-container">
               <div class="flex items-center mb-4">
@@ -1037,7 +901,6 @@
               </div>
               <canvas id="angle-chart" style="max-height: 200px;"></canvas>
             </div>
-
             <div class="chart-container">
               <div class="flex items-center mb-4">
                 <i class="fas fa-weight-hanging text-green-400 mr-3"></i>
@@ -1055,11 +918,8 @@
               <div class="stat-value text-green-400" id="average-rms-emg">0 mV</div>
               <p class="text-slate-400">RMS EMG (mV)</p>
             </div>
-
           </div>
-
           <div class="grid grid-cols-2 gap-6 mb-6">
-
             <div class="card">
               <div class="mb-6">
                 <div class="flex items-center justify-between mb-4">
@@ -1073,7 +933,6 @@
                       class="px-2 py-1 rounded-full text-xs font-bold bg-slate-700 text-slate-300">Siap</span>
                   </div>
                 </div>
-
                 <div class="grid grid-cols-3 gap-3 mb-4">
                   <div class="bg-slate-800 p-3 rounded-lg text-center">
                     <div class="flex items-center justify-center mb-2">
@@ -1082,7 +941,6 @@
                     </div>
                     <div id="mvc-reference-value" class="text-lg font-bold text-orange-400">0 mV</div>
                   </div>
-
                   <div class="bg-slate-800 p-3 rounded-lg text-center">
                     <div class="flex items-center justify-center mb-2">
                       <i class="fas fa-percentage text-green-400 mr-2"></i>
@@ -1090,7 +948,6 @@
                     </div>
                     <div id="current-mvc-percentage" class="text-lg font-bold text-green-400">0%</div>
                   </div>
-
                   <div class="bg-slate-800 p-3 rounded-lg text-center">
                     <div class="flex items-center justify-center mb-2">
                       <i class="fas fa-chart-line text-blue-400 mr-2"></i>
@@ -1099,7 +956,6 @@
                     <div id="current-rms-emg" class="text-lg font-bold text-blue-400">0 mV</div>
                   </div>
                 </div>
-
                 <div class="flex items-center gap-3">
                   <button id="start-calibration-btn" onclick="startEMGCalibration()" class="btn-warning flex-1">
                     <i class="fas fa-play"></i>
@@ -1115,7 +971,6 @@
                   </div>
                   <span id="calibration-timer" class="text-sm text-slate-400" style="display: none;">0s</span>
                 </div>
-
                 <div id="calibration-instructions" class="mt-3 p-3 bg-slate-800 rounded-lg" style="display: none;">
                   <div class="flex items-center mb-2">
                     <i class="fas fa-info-circle text-blue-400 mr-2"></i>
@@ -1127,7 +982,6 @@
                   </p>
                 </div>
               </div>
-
               <div class="border-t border-slate-600 pt-4">
                 <div class="flex items-center justify-between mb-4">
                   <div class="flex items-center">
@@ -1140,7 +994,6 @@
                       class="px-2 py-1 rounded-full text-xs font-bold bg-green-700 text-green-300">Aman</span>
                   </div>
                 </div>
-
                 <div class="grid grid-cols-2 gap-3 mb-4">
                   <div class="bg-slate-800 p-3 rounded-lg">
                     <div class="flex items-center justify-between mb-2">
@@ -1152,7 +1005,6 @@
                       <span class="text-xs text-slate-400" id="pressure-unit">kPa</span>
                     </div>
                   </div>
-
                   <div class="bg-slate-800 p-3 rounded-lg">
                     <div class="flex items-center justify-between mb-2">
                       <span class="text-xs font-medium text-slate-300">Safety Rules</span>
@@ -1164,7 +1016,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div id="safety-alert" class="p-3 bg-red-900 border border-red-600 rounded-lg" style="display: none;">
                   <div class="flex items-center">
                     <i class="fas fa-exclamation-triangle text-red-400 mr-2"></i>
@@ -1177,19 +1028,16 @@
                 </div>
               </div>
             </div>
-
             <div id="session-control-panel" class="card">
               <div class="flex items-center mb-6">
                 <i class="fas fa-play-circle text-2xl text-green-400 mr-4"></i>
                 <h4 class="text-xl font-semibold gradient-text">Kontrol Sesi Rehabilitasi</h4>
               </div>
-
               <div class="flex items-center gap-3 bg-slate-800 px-6 py-3 rounded-xl border border-slate-600 mb-4">
                 <i class="fas fa-clock text-blue-400"></i>
                 <span class="font-semibold">Durasi Sesi:</span>
                 <span id="session-time" class="font-mono font-bold text-xl text-blue-400">00:00:00</span>
               </div>
-
               <div class="flex flex-col gap-4">
                 <div class="flex items-center gap-4">
                   <button id="session-btn" onclick="toggleSession()" class="btn-success flex-1">
@@ -1201,7 +1049,6 @@
                     Akhiri Sesi
                   </button>
                 </div>
-
                 <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 text-center">
                   <i class="fas fa-exclamation-triangle text-yellow-400 mb-2"></i>
                   <p class="text-yellow-300 font-medium">Lakukan Kalibrasi EMG terlebih dahulu</p>
@@ -1209,9 +1056,6 @@
               </div>
             </div>
           </div>
-
-
-
           <div id="view-only-notice" class="info-box" style="display: none;">
             <div class="flex items-center">
               <i class="fas fa-eye text-blue-500 text-xl mr-3"></i>
@@ -1224,7 +1068,6 @@
           </div>
         </div>
       </div>
-
       <div id="analysis-classification" class="tab-content">
         <div id="no-patient-warning-analysis" class="warning-box">
           <div class="flex items-center">
@@ -1235,7 +1078,6 @@
             </div>
           </div>
         </div>
-
         <div id="analysis-classification-content" style="display: none;">
           <div class="flex items-center justify-between mb-8">
             <div class="flex items-center">
@@ -1256,9 +1098,7 @@
               </button>
             </div>
           </div>
-
           <div class="grid grid-cols-12 gap-6 mb-8">
-
             <div class="col-span-5">
               <div class="card">
                 <div class="flex items-center justify-between mb-6">
@@ -1294,7 +1134,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="space-y-3">
                   <div class="flex justify-between items-center p-3 bg-slate-800/50 rounded-lg">
                     <span class="flex items-center text-slate-300">
@@ -1314,7 +1153,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-span-7">
               <div class="card">
                 <div class="flex items-center justify-between mb-6">
@@ -1330,7 +1168,6 @@
                       class="px-2 py-1 rounded bg-purple-600 text-white text-xs font-bold">1000.00 mV</span>
                   </div>
                 </div>
-
                 <div class="grid grid-cols-2 gap-4 mb-4">
                   <div class="bg-slate-800 p-4 rounded-lg text-center">
                     <div class="flex items-center justify-center mb-2">
@@ -1339,7 +1176,6 @@
                     </div>
                     <div id="display-rms" class="text-2xl font-bold text-green-400">0.00 mV</div>
                   </div>
-
                   <div class="bg-slate-800 p-4 rounded-lg text-center">
                     <div class="flex items-center justify-center mb-2">
                       <i class="fas fa-wave-square text-yellow-400 mr-2 text-sm"></i>
@@ -1362,9 +1198,7 @@
               </div>
             </div>
           </div>
-
           <div class="grid grid-cols-12 gap-6 mb-8">
-
             <div class="col-span-4">
               <div class="card text-center">
                 <div class="flex items-center justify-center mb-6">
@@ -1373,7 +1207,6 @@
                   </div>
                   <h3 class="text-xl font-bold text-white">Hasil Klasifikasi</h3>
                 </div>
-
                 <div class="mb-6">
                   <div class="flex justify-center items-center mb-4">
                     <span id="classification-grade" class="font-bold text-7xl">N/A</span>
@@ -1385,7 +1218,6 @@
                       klasifikasi gabungan.</p>
                   </div>
                 </div>
-
                 <div class="bg-slate-800 p-4 rounded-lg space-y-2">
                   <div class="flex justify-between text-sm">
                     <span class="text-slate-400">Total Poin:</span>
@@ -1402,7 +1234,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-span-8">
               <div class="card">
                 <div class="flex items-center mb-6">
@@ -1411,7 +1242,6 @@
                   </div>
                   <h3 class="text-xl font-bold text-white">Kriteria Klasifikasi Grade</h3>
                 </div>
-
                 <div class="grid grid-cols-2 gap-4">
                   <div class="space-y-3">
                     <div
@@ -1426,7 +1256,6 @@
                         <div class="mt-2 text-yellow-200">Bobot sama: 50% ROM + 50% EMG</div>
                       </div>
                     </div>
-
                     <div
                       class="grade-explanation bg-gradient-to-r from-blue-900/30 to-blue-800/30 border-l-4 border-blue-400 p-3 rounded-r-lg">
                       <div class="flex items-center mb-2">
@@ -1437,11 +1266,9 @@
                         <div>• ROM: ≥120° (1.5) + EMG: 45-59% (1.0) = 2.5 poin</div>
                         <div>• ROM: 100-119° (1.0) + EMG: ≥60% (1.5) = 2.5 poin</div>
                         <div>• ROM: 100-119° (1.0) + EMG: 45-59% (1.0) = 2.0 poin</div>
-
                       </div>
                     </div>
                   </div>
-
                   <div class="space-y-3">
                     <div
                       class="grade-explanation bg-gradient-to-r from-yellow-900/30 to-yellow-800/30 border-l-4 border-yellow-400 p-3 rounded-r-lg">
@@ -1453,10 +1280,8 @@
                         <div>• ROM: 100-119° (1.0) + EMG: 30-44% (0.5) = 1.5 poin</div>
                         <div>• ROM: 80-99° (0.5) + EMG: 45-59% (1.0) = 1.5 poin</div>
                         <div>• ROM: 80-99° (0.5) + EMG: 30-44% (0.5) = 1.0 poin</div>
-
                       </div>
                     </div>
-
                     <div
                       class="grade-explanation bg-gradient-to-r from-red-900/30 to-red-800/30 border-l-4 border-red-400 p-3 rounded-r-lg">
                       <div class="flex items-center mb-2">
@@ -1466,7 +1291,6 @@
                       <div class="text-xs text-red-200 space-y-1">
                         <div>• ROM: 80-99° (0.5) + EMG: <30% (0)=0.5 poin </div>
                             <div>• ROM: <80° (0) + EMG: 30-44% (0.5)=0.5 poin </div>
-
                             </div>
                         </div>
                         <div
@@ -1477,7 +1301,6 @@
                           </div>
                           <div class="text-xs text-gray-200 space-y-1">
                             <div>• ROM: <80° (0) + EMG: <30% (0)=0 poin </div>
-
                                 <div>• Tidak ada parameter yang memenuhi threshold minimum</div>
                             </div>
                           </div>
@@ -1499,7 +1322,6 @@
                     </div>
                     <canvas id="combined-analysis-chart" style="max-height: 250px;"></canvas>
                   </div>
-
                   <div class="card">
                     <div class="flex items-center justify-between mb-4">
                       <div class="flex items-center">
@@ -1511,10 +1333,8 @@
                     <canvas id="classification-chart" style="max-height: 250px;"></canvas>
                   </div>
                 </div>
-
               </div>
             </div>
-
             <div id="log-aktivitas" class="tab-content">
               <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center">
@@ -1522,7 +1342,6 @@
                   <h1 class="text-3xl font-bold gradient-text">Log Aktivitas</h1>
                 </div>
               </div>
-
               <div id="log-no-patient" class="info-box">
                 <div class="flex items-center">
                   <i class="fas fa-info-circle text-blue-500 text-xl mr-3"></i>
@@ -1532,7 +1351,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="table-container">
                 <div class="table">
                   <table>
@@ -1553,12 +1371,10 @@
                         <th><i class="fas fa-cogs mr-2"></i>Aksi</th>
                       </tr>
                     </thead>
-
                     <tbody id="log-aktivitas-table">
                     </tbody>
                   </table>
                 </div>
-
                 <div id="log-pagination" class="pagination-controls" style="display: none;">
                   <div class="flex items-center justify-between mt-4">
                     <div class="text-sm text-slate-400">
@@ -1578,7 +1394,6 @@
                 </div>
               </div>
             </div>
-
             <div id="data" class="tab-content">
               <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center">
@@ -1592,7 +1407,6 @@
                   </button>
                 </div>
               </div>
-
               <div id="data-no-patient" class="info-box">
                 <div class="flex items-center">
                   <i class="fas fa-info-circle text-blue-500 text-xl mr-3"></i>
@@ -1602,7 +1416,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="table-container">
                 <div class="table">
                   <table>
@@ -1623,13 +1436,10 @@
                         <th><i class="fas fa-medal mr-2"></i>Grade RMS</th>
                       </tr>
                     </thead>
-
-
                     <tbody id="rehab-data-table">
                     </tbody>
                   </table>
                 </div>
-
                 <div id="rehab-pagination" class="pagination-controls" style="display: none;">
                   <div class="flex items-center justify-between mt-4">
                     <div class="text-sm text-slate-400">
@@ -1648,7 +1458,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="card">
                 <div class="flex items-center mb-6">
                   <i class="fas fa-chart-line text-2xl text-blue-400 mr-4"></i>
@@ -1657,7 +1466,6 @@
                 <div class="chart-container">
                   <canvas id="comparison-chart" class="w-full" style="height: 250px;"></canvas>
                 </div>
-
                 <div class="stats-grid">
                   <div class="stats-card blue">
                     <div class="flex items-center mb-4">
@@ -1683,7 +1491,6 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="stats-card green">
                     <div class="flex items-center mb-4">
                       <i class="fas fa-dumbbell text-green-400 text-xl mr-3"></i>
@@ -1709,7 +1516,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="stats-grid mt-6">
                   <div class="stats-card">
                     <div class="flex items-center mb-4">
@@ -1731,7 +1537,6 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="stats-card">
                     <div class="flex items-center mb-4">
                       <i class="fas fa-trophy text-yellow-400 text-xl mr-3"></i>
@@ -1766,7 +1571,6 @@
           </div>
         </div>
       </div>
-
       <div id="editRehabModal" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeEditRehabModal()">&times;</span>
@@ -1781,35 +1585,28 @@
               <input type="text" id="edit-rehab-name" class="form-input" readonly
                 style="background: rgba(30, 41, 59, 0.5);" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Sesi Ke-</label>
               <input type="number" id="edit-rehab-session" class="form-input" readonly
                 style="background: rgba(30, 41, 59, 0.5);" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Tanggal</label>
               <input type="date" id="edit-rehab-date" class="form-input" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Durasi (detik)</label>
               <input type="number" id="edit-rehab-duration" class="form-input" min="0" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">Rata-rata ROM (°)</label>
               <input type="number" id="edit-rehab-angle" class="form-input" step="0.01" min="0" />
             </div>
-
             <div>
               <label class="block text-sm font-semibold text-slate-300 mb-2">RMS EMG (mV)</label>
               <input type="number" id="edit-rehab-rms-emg" class="form-input" step="0.01" min="0" />
               <p class="text-xs text-slate-400 mt-1">Nilai dalam millivolt (mV)</p>
             </div>
-
-
             <div class="flex gap-4 pt-6">
               <button onclick="saveEditedRehabData()" class="btn-success flex-1">
                 <i class="fas fa-save"></i>
@@ -1822,7 +1619,6 @@
             </div>
           </div>
         </div>
-
         <script>
           // ====================================================================
           // Firebase Config
@@ -6419,7 +6215,6 @@ row.innerHTML = `
   //    updateRMS(rmsValue);
   // });
   // ==========================
-        </script>
+</script>
 </body>
-
 </html>
